@@ -1,5 +1,9 @@
-.bicicletas-bg:nth-child(3) {
-  background: linear-gradient(to right, var(--cor-0) 30%, var(--cor-11) 0%);
+.bicicletas-bg:nth-child(odd) {
+  background-image: linear-gradient(
+    to right,
+    var(--cor-0) 30%,
+    var(--cor-11) 0%
+  );
 }
 
 .bicicletas {
@@ -8,31 +12,35 @@
   gap: 40px;
   padding-top: 60px;
   padding-bottom: 60px;
+  background: url("../../img/dec/top-right.svg") no-repeat top 40px right 20px;
 }
 
 .bicicletas-imagem {
-  position: relative;
+  display: grid;
+}
+
+.bicicletas-imagem img {
+  grid-area: 1/1;
 }
 
 .bicicletas-imagem span {
-  background-color: var(--cor-12);
-  display: inline-block;
+  grid-area: 1/1;
+  place-self: start end;
+  margin-top: 20px;
   padding: 8px 16px 8px 8px;
-  position: absolute;
-  top: 20px;
-  right: 0px;
-  border-radius: 4px 0 0 4px;
+  border-radius: 5px 0 0 5px;
+  background-color: var(--cor-12);
 }
 
 .bicicletas-conteudo {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 1fr;
   align-content: start;
 }
 
 .bicicletas h2,
 .bicicletas p {
-  grid-column: 1/-1;
+  grid-column: 1 / -1;
 }
 
 .bicicletas h2 {
@@ -40,7 +48,7 @@
 }
 
 .bicicletas h2::before {
-  content: '';
+  content: "";
   display: block;
   width: 12px;
   height: 8px;
@@ -56,24 +64,26 @@
   place-self: end;
 }
 
-.bicicletas li {
-  display: flex;
-  align-items: center;
-}
-
 .bicicletas ul {
   display: grid;
   gap: 16px;
 }
 
+.bicicletas li {
+  display: flex;
+  align-items: center;
+}
+
 .bicicletas-conteudo img {
   width: 24px;
+  height: 24px;
   margin-right: 8px;
 }
 
 @media (max-width: 800px) {
-  .bicicletas-bg:nth-child(3) {
-    background: var(--cor-11);
+  .bicicletas-bg:nth-child(odd) {
+    background-image: none;
+    background-color: var(--cor-11);
   }
   .bicicletas {
     grid-template-columns: 1fr;
@@ -81,18 +91,20 @@
     padding-top: 40px;
     padding-bottom: 40px;
   }
-}
-
-@media (max-width: 600px) {
   .bicicletas-conteudo {
     grid-template-columns: 1fr;
   }
   .bicicletas ul {
-    font-size: 1rem;
-    margin-bottom: 32px;
     grid-template-columns: 1fr 1fr;
+    margin-bottom: 32px;
   }
   .bicicletas a {
     place-self: start;
+  }
+}
+
+@media (max-width: 600px) {
+  .bicicletas ul {
+    font-size: 1rem;
   }
 }
